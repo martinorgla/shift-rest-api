@@ -41,9 +41,9 @@ class EventService
     public function create($event): ?Event
     {
         $newEvent = new Event();
-        $newEvent->name = $event->name;
-        $newEvent->start = date('Y-m-d H:i:s', strtotime($event->start));
-        $newEvent->end = date('Y-m-d H:i:s', strtotime($event->start));
+        $newEvent->name = $event['name'];
+        $newEvent->start = date('Y-m-d H:i:s', strtotime($event['start']));
+        $newEvent->end = date('Y-m-d H:i:s', strtotime($event['end']));
 
         return $this->eventRepository->create($newEvent);
     }
