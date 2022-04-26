@@ -33,6 +33,9 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN groupadd -g 1000 www
 RUN useradd -u 1000 -ms /bin/bash -g www www
 
+# Change current user to www
+USER www
+
 # Copy existing application directory contents
 COPY . /var/www/html
 COPY .env.example /var/www/html/.env
@@ -41,9 +44,6 @@ COPY .env.example /var/www/html/.env
 COPY --chown=www:www . /var/www/html
 
 RUN composer install
-
-# Change current user to www
-USER www
 
 EXPOSE 8008
 

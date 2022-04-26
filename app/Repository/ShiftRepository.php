@@ -60,7 +60,6 @@ class ShiftRepository
             'shift.event_id',
             )
             ->join('user', 'user.id', 'shift.user_id')
-            ->where('type', 'shift')
             ->where('location', $location)
             ->where('start', '>=', date('Y-m-d H:i:s', strtotime($start)))
             ->where('end', '<=', date('Y-m-d H:i:s', strtotime($end)))

@@ -1,0 +1,8 @@
+version: '3.3'
+services:
+  shift-rest-api-db:
+    volumes:
+      - "./mysql-data:/var/lib/mysql"
+  shift-rest-api:
+    volumes:
+      - "./:/var/www/html"
