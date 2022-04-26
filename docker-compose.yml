@@ -1,0 +1,22 @@
+version: '3.3'
+services:
+  shift-rest-api-db:
+    build:
+      context: db
+    container_name: shift-rest-api-db
+    ports:
+      - "3306:3306"
+    tty: true
+    volumes:
+      - "./mysql-data:/var/lib/mysql"
+  shift-rest-api:
+    build:
+      context: .
+    container_name: shift-rest-api
+    ports:
+      - "8008:80"
+    tty: true
+    volumes:
+      - "./:/var/www/html"
+    depends_on:
+      - shift-rest-api-db
